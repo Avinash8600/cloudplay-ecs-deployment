@@ -1,136 +1,142 @@
-# 🎮 CloudPlay – CI/CD Tic Tac Toe on Kubernetes
+# 🚀 CloudPlay – Containerized Application Deployment on AWS (ECR, ECS & CloudWatch)
 
-🚀 A modern, cloud-native Tic Tac Toe game built with a complete **CI/CD pipeline using Jenkins, Docker, and Kubernetes** on AWS EC2.
+A cloud-native web application deployed on Amazon ECS, with container images stored in Amazon ECR and application monitoring through Amazon CloudWatch.
 
 ---
 
 ## 🌟 Project Overview
 
-**CloudPlay** is a lightweight web-based game designed to demonstrate real-world **DevOps practices**.
-The application is fully containerized and automatically deployed using a CI/CD pipeline.
+CloudPlay demonstrates a complete AWS container deployment workflow using Docker, Amazon ECR, Amazon ECS, and CloudWatch. The application is containerized, stored in a private container registry, deployed on ECS, and monitored using AWS-native observability services.
 
 ---
 
 ## 🧠 Key Highlights
 
-* ⚡ Interactive Tic Tac Toe game (HTML, CSS, JavaScript)
-* 🐳 Containerized using Docker
-* 🔁 Automated CI/CD pipeline using Jenkins
-* ☸️ Deployed on Kubernetes (Kind cluster on AWS EC2)
-* 🌐 Exposed via NodePort service
-* 🔄 Supports rolling updates for zero downtime deployment
+- 🐳 Containerized application using Docker
+- 📦 Container image management with Amazon ECR
+- 🚀 Application deployment on Amazon ECS
+- 📊 Monitoring and logging with Amazon CloudWatch
+- 🔄 Automated deployment workflow
+- ☁️ AWS cloud-native architecture
+- 📈 Scalable and production-ready deployment
 
 ---
 
 ## 🏗️ Architecture
 
-```
-GitHub → Jenkins → Docker → DockerHub → Kubernetes → Browser
+```text
+GitHub → Docker → Amazon ECR → Amazon ECS → CloudWatch → Users
 ```
 
 ---
 
 ## 🛠️ Tech Stack
 
-| Category         | Tools/Technologies    |
-| ---------------- | --------------------- |
-| Frontend         | HTML, CSS, JavaScript |
-| Containerization | Docker                |
-| CI/CD            | Jenkins               |
-| Orchestration    | Kubernetes (Kind)     |
-| Cloud Platform   | AWS EC2               |
-| Version Control  | Git & GitHub          |
+| Category | Technologies |
+|-----------|-------------|
+| Frontend | HTML, CSS, JavaScript |
+| Containerization | Docker |
+| Container Registry | Amazon ECR |
+| Container Orchestration | Amazon ECS |
+| Monitoring & Logging | Amazon CloudWatch |
+| Cloud Platform | AWS |
+| Version Control | Git & GitHub |
 
 ---
 
 ## 📦 Project Structure
 
-```
-cloudplay-cicd-k8s/
+```text
+cloudplay-ecs-deployment/
 │
 ├── index.html
 ├── style.css
 ├── script.js
 ├── Dockerfile
-├── Jenkinsfile
-└── k8s/
-    ├── deployment.yaml
-    └── service.yaml
+├── ecs-task-definition.json
+└── README.md
 ```
 
 ---
 
-## ⚙️ CI/CD Pipeline Flow
+## ⚙️ Deployment Workflow
 
-1. Developer pushes code to GitHub
-2. Jenkins pipeline is triggered automatically
-3. Docker image is built and pushed to DockerHub
-4. Kubernetes deployment is updated
-5. Application is live with latest changes 🎉
+1. Build the Docker image
+2. Push the image to Amazon ECR
+3. Create an ECS Task Definition
+4. Deploy the application using ECS Service
+5. Access the application through the ECS endpoint
+6. Monitor logs and metrics using CloudWatch
 
 ---
 
 ## 🚀 Getting Started
 
-### 🔹 Clone Repository
+### Clone Repository
 
-```
-git clone https://github.com/your-username/cloudplay-cicd-k8s.git
-cd cloudplay-cicd-k8s
-```
-
-### 🔹 Build Docker Image
-
-```
-docker build -t your-dockerhub-username/cloudplay .
-docker push your-dockerhub-username/cloudplay
+```bash
+git clone https://github.com/your-username/cloudplay-ecs-deployment.git
+cd cloudplay-ecs-deployment
 ```
 
-### 🔹 Deploy to Kubernetes
+### Build Docker Image
 
+```bash
+docker build -t cloudplay .
 ```
-kubectl apply -f k8s/
+
+### Tag Image
+
+```bash
+docker tag cloudplay:latest <account-id>.dkr.ecr.<region>.amazonaws.com/cloudplay:latest
 ```
+
+### Push to Amazon ECR
+
+```bash
+docker push <account-id>.dkr.ecr.<region>.amazonaws.com/cloudplay:latest
+```
+
+### Deploy to Amazon ECS
+
+- Create ECS Task Definition
+- Create ECS Service
+- Launch the Application
 
 ---
 
-## 📸 Screenshots (Add Here)
+## 📸 Screenshots
 
-* Jenkins Pipeline Execution ✅
-* Docker Image on DockerHub 🐳
-* Kubernetes Pods Running ☸️
-* Game UI 🎮
+- Amazon ECR Repository 📦
+- Amazon ECS Cluster 🚀
+- ECS Service Running ✅
+- CloudWatch Logs 📊
+- CloudWatch Metrics Dashboard 📈
+- Application UI 🌐
 
 ---
 
 ## 🎯 Resume Description
 
-> Developed **CloudPlay**, a cloud-native Tic Tac Toe game with automated CI/CD pipeline using Jenkins, Docker, and Kubernetes on AWS EC2, enabling continuous deployment and scalable architecture.
+Developed CloudPlay, a containerized web application deployed on Amazon ECS using Docker and Amazon ECR, with centralized monitoring and logging through Amazon CloudWatch. Implemented cloud-native deployment practices and gained hands-on experience with AWS container services, observability, and scalable application hosting.
 
 ---
 
 ## 📈 Future Enhancements
 
-* 🎯 Add AI opponent (single-player mode)
-* 🌐 Multiplayer support (WebSockets)
-* 📊 Monitoring with Prometheus & Grafana
-* 🔐 Secure deployment using Kubernetes Secrets
-* 🚀 Helm chart packaging
+- CI/CD using Jenkins or GitHub Actions
+- ECS Service Auto Scaling
+- AWS Secrets Manager Integration
+- Grafana Dashboards
+- Amazon EKS Migration
 
 ---
 
-## 🤝 Contributing
+## 👨‍💻 Author
 
-Feel free to fork this repository and enhance the project!
-
----
-
-## 📬 Contact
-
-**Avinash Wagh**
+**Avinash Wagh**  
 💼 Software Engineer | Cloud & DevOps Enthusiast
-📧 [avinash.wagh@modiinnovations.com](mailto:avinash.wagh@modiinnovations.com)
 
 ---
 
-⭐ If you like this project, give it a star!
+⭐ If you found this project useful, consider giving it a star!
